@@ -45,9 +45,9 @@ class _SignInState extends State<SignIn> {
 
           HelperFunctions.saveUserLoggedInSharedPreference(true);
           HelperFunctions.saveUserNameSharedPreference(
-              userInfoSnapshot.docs[0].data()["userName"]);
+              userInfoSnapshot.docs[1].data()["userName"]);
           HelperFunctions.saveUserEmailSharedPreference(
-              userInfoSnapshot.docs[0].data()["userEmail"]);
+              userInfoSnapshot.docs[1].data()["userEmail"]);
 
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => ChatRoom()));
@@ -64,6 +64,7 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       appBar: appBarMain(context),
       body: isLoading
           ? Container(

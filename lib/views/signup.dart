@@ -17,8 +17,7 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   TextEditingController emailEditingController = new TextEditingController();
   TextEditingController passwordEditingController = new TextEditingController();
-  TextEditingController usernameEditingController =
-      new TextEditingController();
+  TextEditingController usernameEditingController = new TextEditingController();
 
   AuthService authService = new AuthService();
   DatabaseMethods databaseMethods = new DatabaseMethods();
@@ -27,22 +26,19 @@ class _SignUpState extends State<SignUp> {
   bool isLoading = false;
 
   singUp() async {
-
     if(formKey.currentState.validate()){
       setState(() {
-
         isLoading = true;
       });
 
       await authService.signUpWithEmailAndPassword(emailEditingController.text,
           passwordEditingController.text).then((result){
             if(result != null){
-
               Map<String,String> userDataMap = {
                 "userName" : usernameEditingController.text,
                 "userEmail" : emailEditingController.text
               };
-
+              print(userDataMap);
               databaseMethods.addUserInfo(userDataMap);
 
               HelperFunctions.saveUserLoggedInSharedPreference(true);
@@ -60,6 +56,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       appBar: appBarMain(context),
       body: isLoading ? Container(child: Center(child: CircularProgressIndicator(),),) :  Container(
         padding: EdgeInsets.symmetric(horizontal: 24),

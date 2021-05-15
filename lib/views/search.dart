@@ -1,5 +1,4 @@
 import 'package:chat_app/helper/constants.dart';
-import 'package:chat_app/models/user.dart';
 import 'package:chat_app/services/database.dart';
 import 'package:chat_app/views/chat.dart';
 import 'package:chat_app/widget/widget.dart';
